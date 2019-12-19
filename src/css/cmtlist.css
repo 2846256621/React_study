@@ -1,0 +1,26 @@
+
+/*
+css模块化，只针对类选择器和 id选择器
+不会将 标签选择器模块化
+
+使用 :global(.类名)包起来的类名，不会被模块化，而是会全局生效
+使用 :local(.类名)包起来的类名，会被模块化，不会全局生效   但是一般不用
+*/
+.content{
+    width: 100%;
+}
+.title{
+    color:red;
+    text-align: center;
+    font-weight: 200;
+}
+.title2{
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #cccccc;
+}
+.btn{
+    border: 1px solid #cccccc;
+    background-color: bisque;
+    padding: 5px 15px;
+    margin-left: 50px;
+}

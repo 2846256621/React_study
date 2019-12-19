@@ -1,0 +1,20 @@
+.title{
+    font-size: 18px;
+    color: #00d6d6;
+}
+.item{
+    width:80%;
+    margin: 10px auto;
+    border:1px solid #dccccc;
+    padding:10px;
+    box-shadow:0 0 10px #ccc
+}
+/*全局样式  不会模块化*/
+:global(.info){
+    width:80%;
+    margin: 10px auto;
+    border:1px solid #dcdcdc;
+    background-color: #eaccc0;
+    padding:10px;
+    box-shadow:0 0 10px #ccc
+}
