@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import ReactDom from 'react-dom';
-
-ReactDom.render(<div>
-
-</div>,document.getElementById('app'));
+import App from './App'
+ReactDom.render(<Fragment>
+    <App/>
+</Fragment>,document.getElementById('app'));

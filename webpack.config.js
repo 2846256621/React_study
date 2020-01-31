@@ -28,6 +28,8 @@ module.exports ={
     module: { //第三方规则
         rules: [
             {test:/\.js|jsx$/,use:'babel-loader',exclude:/node_modules/},//不能忘记
+            {test:/\.css$/,use:['style-loader','css-loader?modules'],exclude:/node_modules/}, //css-loader加参数，modules表示为普通的样式表启用模块化
+            {test:/\.ttf|woff|woff2|eot|svg$/,use:'url-loader'}, //字体文件
         ]
     },
     resolve:{
