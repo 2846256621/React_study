@@ -6,7 +6,7 @@ class TodoList extends Component {
         todos:propTypes.arrayOf(propTypes.shape({
             id:propTypes.number.isRequired,
             title:propTypes.string.isRequired,
-            isCompleted:propTypes.bool.isRequired,
+            completed:propTypes.bool.isRequired,
 
         })).isRequired,
         completedChange:propTypes.func
@@ -16,18 +16,21 @@ class TodoList extends Component {
         return (
             <ul>
                 {
-                    this.props.todos.map(item=>{
+                    this.props.todos.map((item,index)=>{
                         // 这个方式太复杂 展开传递
                         // return <TodoItem
                         //     id={item.id}
                         //     title={item.title}
-                        //     isCompleted={item.isCompleted}
+                        //     completed={item.completed}
                         //     key={item.id}/>
 
                         //可以选择使用 扩展运算符
-                        return <TodoItem {...item}
-                                         key={item.id}
-                                         completedChange={this.props.completedChange}/>
+                        if(index<15){
+                            return <TodoItem {...item}
+                                             key={item.id}
+                                             completedChange={this.props.completedChange}/>
+                        }
+
                     })
                 }
                 {/*整个传递props 到 Todoitem 组件*/}
