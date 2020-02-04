@@ -36,15 +36,15 @@ class Lick extends Component {
         // });
         // 方法二 参数是方法 返回值是对象 方法的参数可以是 上一次的state值 和上一次的props
         this.setState((prev)=>{
-            console.log('内部state值',this.state.isLiked);
+            // console.log('内部state值',this.state.isLiked);
             return {
                 // isLiked: !this.state.isLiked
                 isLiked: !prev.isLiked
             }
         },()=>{
-            console.log('回调state值',this.state.isLiked)
+            // console.log('回调state值',this.state.isLiked)
         });
-        console.log('外部state值',this.state.isLiked)
+        // console.log('外部state值',this.state.isLiked)
     };
     render() {
         return (
