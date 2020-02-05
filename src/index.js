@@ -1,19 +1,32 @@
 import React, { Fragment} from 'react';
 import ReactDom from 'react-dom';
-import App from '@/components/Count/App';
-import {CounterProvider} from '@/components/Count/CounterStore'
-// import Count from './components/Count/index'
 
-
-//如果想要全局的扩展React.Component的 组件的一些prototype
+//todo 1.如果想要全局的扩展React.Component的 组件的一些prototype
 // 比如想把ajax的方法 全局的挂载到组件的this上，如下方法
 // 组件内部就可通过this.http.方法名 来执行一些操作
 // import * as services from './services'
 // React.Component.prototype.http = services;
 
 
+// todo 2. context 传值的使用
+// import App from '@/components/ContextCount/App';
+// import {CounterProvider} from '@/components/ContextCount/CounterStore'
+
+//todo 3. react-hooks的使用
+import Count from './components/ContextCount/index';
+
+//todo 4. 高阶组件的使用
+// import App from './components/高阶组件/App'
+
+
+//todo 5. redux的使用
+import App from './components/Redux/App'
+
+
+
 ReactDom.render(<Fragment>
-    <CounterProvider>
-      <App/>
-    </CounterProvider>
+    {/*<CounterProvider>*/}
+      {/*<App/>*/}
+    {/*</CounterProvider>*/}
+    <App/>
 </Fragment>,document.getElementById('app'));

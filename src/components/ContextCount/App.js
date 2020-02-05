@@ -3,7 +3,7 @@ import React from "react";
 import {
     CounterBtn,
     Counter
-} from '../Count'
+} from './'
 
 export  default class App extends Component {
     render() {

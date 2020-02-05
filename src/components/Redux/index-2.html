@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redux实现原理二</title>
+</head>
+<body>
+<div>
+    <button onclick="store.dispatch({type:'Jian',n:2})">-</button>
+    <span id="countDisplay">10</span>
+    <button onclick="store.dispatch({type:'Jia',n:3})">+</button>
+</div>
+<script>
+    const countDisplay = document.querySelector('#countDisplay');
+    const countState={
+        count :5
+    };
+    function changeState(state,action){
+        if(!state){
+            return countState
+        }
+        switch (action.type) {
+            case 'Jia':
+                return{
+                    //每次return一个新的东西
+                    ...state,
+                    count:state.count + action.n
+                };
+            case 'Jian':
+                return{
+                    ...state,
+                    count:state.count - action.n
+                };
+            default:
+                return state;
+        }
+    }
+
+    //todo 集中管理状态 想当与一个store
+    function createStore(reducer) {
+        let state = null;
+        //取到状态值
+        const getState = ()=> { return state};
+
+        //监听 需要渲染多个 用数组保存
+        let listeners = [];
+        const subScribe = (listen)=>{ return listeners.push(listen)};
+        const dispatch = (action)=> {
+            //每次修改之后，会返回一个新得state
+            state = reducer(state,action);
+            listeners.forEach(item =>{
+               return item();
+            });
+        };
+
+        //第一次 没有state 的时候，将state 为countState
+        dispatch({});
+        //导出 才能使用
+        return {
+            getState, //取数值
+            dispatch, //改数值
+            subScribe  //自定义函数
+        }
+    }
+
+    const  store = createStore(changeState);
+
+    function renderCount() {
+        countDisplay.innerHTML = store.getState().count
+    }
+
+    renderCount();
+
+    store.subScribe(renderCount);
+</script>
+</body>
+</html>

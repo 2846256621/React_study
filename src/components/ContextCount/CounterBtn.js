@@ -1,6 +1,6 @@
 import {Component} from "react";
 import React from "react";
-import {CounterConsumer} from '../Count/CounterStore'
+import {CounterConsumer} from './CounterStore'
 class CountBtn extends Component {
     render() {
         return (

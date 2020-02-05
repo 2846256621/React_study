@@ -104,8 +104,6 @@ class App extends Component {
                     <div>Loading...</div> :
                     <TodoList todos={this.state.todo}  completedChange={this.completedChange} />
                 }
-
-
             </div>
         );
     }

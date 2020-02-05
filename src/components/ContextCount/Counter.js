@@ -1,7 +1,7 @@
 //定义Counter组件
 import {Component} from "react";
 import React from "react";
-import {CounterConsumer} from '../Count/CounterStore'
+import {CounterConsumer} from './/CounterStore'
 class Counter extends Component {
     render() {
         return (

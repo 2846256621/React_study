@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redux实现原理一</title>
+</head>
+<body>
+<div>
+    <button onclick="Dispatch({type:'Jian',n:2})">-</button>
+    <span id="countDisplay">10</span>
+    <button onclick="Dispatch({type:'Jia',n:3})">+</button>
+</div>
+<script>
+    const countDisplay = document.querySelector('#countDisplay');
+    const state={
+        count :5
+    };
+
+    function renderCount(state){
+      countDisplay.innerHTML = state.count
+    }
+    renderCount(state);
+
+    function changeState(action){
+        switch (action.type) {
+            case 'Jia':
+                state.count += action.n;
+                break;
+            case 'Jian':
+                state.count -= action.n;
+                break;
+            default: break
+        }
+    }
+
+   function Dispatch(action) {
+        changeState(action);
+        renderCount(state)
+   }
+
+</script>
+</body>
+</html>
