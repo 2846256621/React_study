@@ -1,0 +1,6 @@
+
+//使用 action 要先定义actionType
+export default {
+    CAR_AMOUNT_INCREMENT:'CAR_AMOUNT_INCREMENT',
+    CAR_AMOUNT_DECREMENT:'CAR_AMOUNT_DECREMENT'
+}

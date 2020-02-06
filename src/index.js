@@ -20,13 +20,19 @@ import Count from './components/ContextCount/index';
 
 
 //todo 5. redux的使用
-import App from './components/Redux/App'
+// import App from './components/Redux/App'
 
-
+//todo 6. redux购物车
+import App from './components/ShoppingCar/App'
+import store from './store'
+//将store绑定到window上 好测试
+window.store = store;
+console.log(store);
 
 ReactDom.render(<Fragment>
     {/*<CounterProvider>*/}
       {/*<App/>*/}
     {/*</CounterProvider>*/}
-    <App/>
+    <App store={store}/>
+
 </Fragment>,document.getElementById('app'));
