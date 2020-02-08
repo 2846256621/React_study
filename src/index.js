@@ -22,17 +22,33 @@ import Count from './components/ContextCount/index';
 //todo 5. redux的使用
 // import App from './components/Redux/App'
 
-//todo 6. redux购物车
-import App from './components/ShoppingCar/App'
-import store from './store'
+//todo 6. redux购物车 手动连接redux
+// import App from './components/ShoppingCar/App'
+// import store from './store'
+
 //将store绑定到window上 好测试
-window.store = store;
-console.log(store);
+// window.store = store;
+// console.log(store);
+
+//todo 7. react-redux 自动连接redux
+import App from './components/React-redux/App'
+// Provider是react-redux 提供的一个组件
+import {Provider} from 'react-redux'
+import store from './store'
 
 ReactDom.render(<Fragment>
-    {/*<CounterProvider>*/}
-      {/*<App/>*/}
-    {/*</CounterProvider>*/}
-    <App store={store}/>
+    {/*<App/>*/}
 
+    {/*使用context传值  */}
+    {/*</CounterProvider>*/}
+
+    {/*手动连接redux*/}
+    {/*<App store={store}/>*/}
+
+    {/*使用react-redux*/}
+
+    {/*使用的时候，一般把这个组件放在应用程序的最外层 ,使用这个组件必须有一个store属性，这个store属性的值，就是创建的那个store*/}
+    <Provider store={store}>
+       <App/>
+    </Provider>
 </Fragment>,document.getElementById('app'));
