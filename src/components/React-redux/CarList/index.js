@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 //todo 哪个组件要用store里面的东西，哪个组件就引入 connect ，使用connect连接 组件和 store
 // this.props 就可得到值
 import {connect} from 'react-redux'
-import {increment,decrement} from '../../../actions/car'
+import {increment,decrement,decrementAsync} from '../../../actions/car'
 
 class CarList extends Component {
 
@@ -29,6 +29,7 @@ class CarList extends Component {
                                 <td>{item.title}</td>
                                 <td>{item.price}</td>
                                 <td>
+                                    <button onClick={() => this.props.decrementAsync(item.id)}>等会减</button>
                                     <button onClick={() => this.props.decrement(item.id)}>-</button>
                                     <span>{item.amount}</span>
                                     <button onClick={this.props.increment.bind(this,item.id)}>+</button>
@@ -78,4 +79,4 @@ class CarList extends Component {
  * 一般第二个参数，直接传入一个对象，就是actionCreators，这样就可以通过this.props.actionCreators来调用，
  * 这样的话，在调用之后，那个actionCreators就会自动帮它内部的action dispatch 出去
  * */
-export default connect(mapStateToProps,{increment,decrement})(CarList);
+export default connect(mapStateToProps,{increment,decrement,decrementAsync})(CarList);

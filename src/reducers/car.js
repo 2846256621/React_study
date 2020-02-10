@@ -33,6 +33,7 @@ export default (state=initState,action)=>{
                }
                return item;
             });
+
         case actionType.CAR_AMOUNT_DECREMENT:
             return state.map(item=>{
                 if(item.id === action.payload.id){

@@ -17,6 +17,9 @@ export const increment = (id) =>{
         }
     }
 };
+/**
+ * 同步action
+ * */
 export const decrement = (id) =>{
     return {
         type:actionType.CAR_AMOUNT_DECREMENT,
@@ -25,3 +28,41 @@ export const decrement = (id) =>{
         }
     }
 };
+/***
+ * 异步action  相当于 dispatch一个同步action
+ *  使用redux-thunk之后，在createStore中 再传入一个参数，叫 applyMiddleware(thunk)
+ *  就可以在actionCreator里面 return一个方法，这个方法的参数是dispatch
+ *  不需要写 actionType
+ * */
+export const decrementAsync = (id) =>{
+    return (dispatch)=>{
+        setTimeout(()=>{
+            dispatch({
+                type:actionType.CAR_AMOUNT_DECREMENT,
+                payload:{
+                    id
+                }
+            })
+        },2000)
+    }
+
+};
+
+/**上面代码 等价于 以下代码
+ * id => dispatch =>  相当于两次 return function
+ * 一个箭头 就是一个return
+ * */
+// export default decrementAsync = id => dispatch =>{
+//     setTimeout(()=>{
+//         dispatch(decrement(id))
+//     },2000)
+// }
+
+/**
+ * 异步action 使用中间件redux-thunk
+ *
+ * 手动：action => dispatch(action) =>reducer =>store =>view
+ *
+ * 使用中间件：action => middleware处理生成新的action =>手动dispatch =>reducer =>store =>view
+ *
+ * */
